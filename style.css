@@ -1732,6 +1732,258 @@ a:focus-visible {
   font-size: 2rem;
 }
 
+.panda-break {
+  position: relative;
+  padding-top: clamp(4rem, 7vw, 7rem);
+  padding-bottom: clamp(4rem, 7vw, 7rem);
+  display: grid;
+  grid-template-columns: minmax(260px, 0.52fr) minmax(420px, 1fr);
+  gap: clamp(3rem, 8vw, 9rem);
+  align-items: center;
+  background: var(--cyan);
+  overflow: hidden;
+}
+
+.panda-break::before {
+  content: "";
+  position: absolute;
+  inset: 0 50%;
+  z-index: -1;
+  width: 100vw;
+  background:
+    linear-gradient(rgba(24, 37, 39, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 37, 39, 0.06) 1px, transparent 1px),
+    var(--cyan);
+  background-size: 24px 24px;
+  transform: translateX(-50%);
+}
+
+.panda-copy h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(3.1rem, 5.8vw, 6.3rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+}
+
+.panda-copy h2 em {
+  color: var(--orange);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.panda-copy > p:not(.section-kicker) {
+  max-width: 440px;
+  margin: 2rem 0;
+  color: #3d5654;
+  font-size: 0.9rem;
+}
+
+.panda-action {
+  min-width: 190px;
+  padding: 0.85rem 1rem;
+  display: inline-flex;
+  justify-content: space-between;
+  gap: 2rem;
+  border: 1px solid var(--ink);
+  color: var(--paper);
+  background: var(--ink);
+  font-family: inherit;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.panda-action:hover {
+  color: var(--ink);
+  background: var(--acid);
+  transform: translateY(-3px);
+}
+
+.panda-workstation {
+  position: relative;
+  min-height: 510px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  box-shadow: 15px 15px 0 var(--ink);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.panda-workstation::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.34;
+  background:
+    linear-gradient(rgba(24, 37, 39, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 37, 39, 0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.panda-frame {
+  position: absolute;
+  right: -1%;
+  bottom: 1.6rem;
+  width: min(74%, 560px);
+  aspect-ratio: 1.25 / 1;
+  background-image: url("assets/panda-coder.png");
+  background-repeat: no-repeat;
+  background-size: 300% 200%;
+  background-position: left center;
+  image-rendering: pixelated;
+  transition:
+    background-position 1ms linear,
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 350ms ease;
+}
+
+.panda-workstation[data-panda-state="drained"] .panda-frame {
+  background-position: center center;
+  filter: saturate(0.82);
+  transform: translateY(4px);
+}
+
+.panda-workstation[data-panda-state="sleeping"] .panda-frame {
+  background-position: right center;
+  filter: saturate(0.72);
+  transform: translateY(9px);
+}
+
+.panda-screen {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 2;
+  width: min(46%, 275px);
+  min-height: 220px;
+  padding: 2.7rem 1rem 1rem;
+  color: var(--acid);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  box-shadow: 7px 7px 0 var(--orange);
+}
+
+.panda-screen-top {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 34px;
+  padding: 0 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-bottom: 1px solid rgba(243, 239, 229, 0.25);
+}
+
+.panda-screen-top i {
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--paper);
+  border-radius: 50%;
+}
+
+.panda-screen-top i:first-child {
+  background: var(--orange);
+}
+
+.panda-screen-top b {
+  margin-left: auto;
+  color: #94aaa5;
+  font-family: "Courier New", monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.07em;
+}
+
+.panda-screen code {
+  display: block;
+  color: var(--acid);
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.53rem, 0.8vw, 0.68rem);
+  line-height: 1.8;
+  white-space: normal;
+}
+
+.energy-meter {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+}
+
+.energy-meter span {
+  height: 8px;
+  background: var(--acid);
+  border: 1px solid var(--acid);
+  transition: background 250ms ease;
+}
+
+.panda-workstation[data-panda-state="drained"] .energy-meter span:nth-child(n + 3),
+.panda-workstation[data-panda-state="sleeping"] .energy-meter span {
+  background: transparent;
+}
+
+.panda-workstation[data-panda-state="sleeping"] .energy-meter span:first-child {
+  background: var(--orange);
+}
+
+.panda-state-label {
+  position: absolute;
+  bottom: 1.3rem;
+  left: 1.3rem;
+  z-index: 3;
+  padding: 0.55rem 0.7rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 0.5rem;
+  align-items: center;
+  border: 1px solid var(--ink);
+  background: var(--acid);
+  box-shadow: 4px 4px 0 var(--ink);
+  font-family: "Courier New", monospace;
+}
+
+.state-light {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #56b84d;
+  box-shadow: 0 0 0 3px rgba(86, 184, 77, 0.2);
+}
+
+.panda-workstation[data-panda-state="drained"] .state-light {
+  background: var(--orange);
+}
+
+.panda-workstation[data-panda-state="sleeping"] .state-light {
+  background: var(--blue);
+}
+
+.panda-state-label strong {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+}
+
+.panda-state-label small {
+  grid-column: 2;
+  color: var(--muted);
+  font-size: 0.45rem;
+}
+
 .contact {
   position: relative;
   padding-top: clamp(5rem, 8vw, 8rem);
@@ -1888,24 +2140,41 @@ a:focus-visible {
   transform: translateY(-5px);
 }
 
-.pixel-pet svg {
+.pet-sprite {
   display: block;
   width: 100%;
-  overflow: visible;
+  aspect-ratio: 1;
+  background-repeat: no-repeat;
   image-rendering: pixelated;
-  shape-rendering: crispEdges;
+}
+
+.snorlax-sprite {
+  background-image: url("assets/snorlax-pets.png");
+  background-size: 300% 100%;
+}
+
+.snorlax-frame-one {
+  background-position: left center;
+}
+
+.snorlax-frame-two {
+  background-position: center center;
+}
+
+.snorlax-frame-three {
+  background-position: right center;
 }
 
 .pet-sitting {
-  width: clamp(110px, 11vw, 160px);
+  width: clamp(135px, 13vw, 190px);
 }
 
 .pet-curled {
-  width: clamp(125px, 13vw, 185px);
+  width: clamp(145px, 14vw, 205px);
 }
 
 .pet-sprawled {
-  width: clamp(140px, 15vw, 210px);
+  width: clamp(155px, 15vw, 220px);
 }
 
 .pixel-zzz {
@@ -1948,22 +2217,49 @@ a:focus-visible {
   transform: rotate(-2deg);
 }
 
-.pixel-berry {
-  position: absolute;
-  right: 4%;
-  bottom: 12%;
-  width: 12px;
-  height: 12px;
-  color: var(--orange);
-  font-size: 1rem;
-  line-height: 0.5;
-  text-shadow:
-    -5px 3px 0 #578c52,
-    2px -5px 0 #578c52;
-}
-
 .pixel-pet.is-moving .pixel-zzz {
   animation-duration: 0.4s;
+}
+
+.pixel-pet.is-booped {
+  animation: pet-boop 500ms steps(4, end);
+}
+
+@keyframes pet-boop {
+  25% {
+    transform: translateY(-12px) rotate(-3deg);
+  }
+  60% {
+    transform: translateY(2px) rotate(2deg);
+  }
+}
+
+.pet-toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 30;
+  max-width: min(320px, calc(100vw - 2rem));
+  padding: 0.7rem 0.9rem;
+  color: var(--paper);
+  background: var(--ink);
+  border: 1px solid var(--acid);
+  box-shadow: 5px 5px 0 var(--orange);
+  font-family: "Courier New", monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(15px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.pet-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .reveal {
@@ -2043,6 +2339,14 @@ a:focus-visible {
 
   .career-story {
     grid-column: 2;
+  }
+
+  .panda-break {
+    grid-template-columns: 1fr;
+  }
+
+  .panda-copy {
+    max-width: 650px;
   }
 
   .contact-main {
@@ -2315,6 +2619,29 @@ a:focus-visible {
 
   .resume-footnotes > div {
     min-height: 120px;
+  }
+
+  .panda-workstation {
+    min-height: 480px;
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+
+  .panda-screen {
+    top: 1rem;
+    left: 1rem;
+    width: calc(100% - 2rem);
+    min-height: 158px;
+  }
+
+  .panda-frame {
+    right: -4%;
+    bottom: 1rem;
+    width: 92%;
+  }
+
+  .panda-state-label {
+    bottom: 0.8rem;
+    left: 0.8rem;
   }
 
   .tool-row {

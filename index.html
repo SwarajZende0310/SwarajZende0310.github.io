@@ -577,6 +577,49 @@
         </div>
       </section>
 
+      <section class="panda-break section-shell" aria-labelledby="panda-title">
+        <div class="panda-copy reveal">
+          <p class="section-kicker">Pet process / PID 0310</p>
+          <h2 id="panda-title">One more bug<br /><em>before bed.</em></h2>
+          <p>
+            This is Patch. Patch has been coding for too long. Check on him
+            before the battery—and the developer—hits zero.
+          </p>
+          <button id="panda-action" class="panda-action" type="button">
+            Check energy <span>→</span>
+          </button>
+        </div>
+
+        <div
+          class="panda-workstation reveal"
+          data-panda-state="coding"
+          role="button"
+          tabindex="0"
+          aria-label="Patch the coding panda is currently coding. Activate to check on him."
+        >
+          <div class="panda-screen">
+            <span class="panda-screen-top">
+              <i></i><i></i><i></i>
+              <b>PATCH_STATUS.LOG</b>
+            </span>
+            <code id="panda-log" aria-live="polite">
+              &gt; compiling one_last_fix.cpp<br />
+              &gt; energy: 64%<br />
+              &gt; bedtime: postponed_
+            </code>
+            <div class="energy-meter" aria-label="Panda energy level">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="panda-frame" aria-hidden="true"></div>
+          <div class="panda-state-label">
+            <span class="state-light"></span>
+            <strong id="panda-state-text">CODING</strong>
+            <small>click the button—or the panda</small>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="contact section-shell">
         <p class="section-kicker reveal">05 / Say hello</p>
         <div class="contact-main reveal">
@@ -633,9 +676,11 @@
       title="Route 12 is blocked. Again."
     >
       <span class="pixel-zzz">Zz</span>
-      <svg viewBox="0 0 128 104" role="img" aria-label="Pixel Snorlax sleeping upright">
-        <use href="snorlax-sprites.svg#snorlax-sitting"></use>
-      </svg>
+      <span
+        class="pet-sprite snorlax-sprite snorlax-frame-one"
+        role="img"
+        aria-label="Polished pixel-art Snorlax sleeping upright"
+      ></span>
       <span class="pet-lore">ROUTE 12: BLOCKED</span>
     </button>
 
@@ -647,10 +692,11 @@
       title="880 pounds of snacks later…"
     >
       <span class="pixel-zzz">zZ</span>
-      <svg viewBox="0 0 144 88" role="img" aria-label="Pixel Snorlax curled up sleeping">
-        <use href="snorlax-sprites.svg#snorlax-curled"></use>
-      </svg>
-      <span class="pixel-berry" aria-hidden="true">●</span>
+      <span
+        class="pet-sprite snorlax-sprite snorlax-frame-two"
+        role="img"
+        aria-label="Polished pixel-art Snorlax curled up beside an Oran Berry"
+      ></span>
       <span class="pet-lore">BERRY COMA</span>
     </button>
 
@@ -662,10 +708,14 @@
       title="A Poké Flute should wake this one."
     >
       <span class="pixel-zzz">Z</span>
-      <svg viewBox="0 0 160 80" role="img" aria-label="Pixel Snorlax sprawled out sleeping">
-        <use href="snorlax-sprites.svg#snorlax-sprawled"></use>
-      </svg>
+      <span
+        class="pet-sprite snorlax-sprite snorlax-frame-three"
+        role="img"
+        aria-label="Polished pixel-art Snorlax sprawled across a path"
+      ></span>
       <span class="pet-lore">POKÉ FLUTE REQUIRED</span>
     </button>
+
+    <div id="pet-toast" class="pet-toast" role="status" aria-live="polite"></div>
   </body>
 </html>

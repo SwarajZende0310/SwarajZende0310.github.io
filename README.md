@@ -18,6 +18,8 @@ Then visit `http://localhost:8000`.
 
 - Page content and project links live in `index.html`.
 - Colors and visual styling live in `style.css`.
-- Interactions—including the randomly placed pixel pets—live in `script.js`.
+- Interactions—including random pet placement and Patch the coding panda’s
+  energy states—live in `script.js`.
 - The résumé shown on the site is `assets/Swaraj-Zende-Resume.pdf`.
-- Pixel Snorlax poses live in `snorlax-sprites.svg`.
+- Polished pet sprite sheets live in `assets/snorlax-pets.png` and
+  `assets/panda-coder.png`.
