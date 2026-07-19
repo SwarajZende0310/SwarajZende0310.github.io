@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="snorlax-sitting" viewBox="0 0 128 104">
+    <g shape-rendering="crispEdges" stroke="#17282b" stroke-width="4" stroke-linejoin="miter">
+      <path d="M16 94h96v6H16z" fill="#17282b" opacity=".24" stroke="none"/>
+      <path d="M38 28 30 6l24 12M90 18l24-12-8 27" fill="#315c64"/>
+      <path d="M28 45V31h8V21h12V13h32v5h14v10h8v17H28z" fill="#315c64"/>
+      <path d="M24 55h12V43h56v10h14v12h8v24h-12V77H92v17H36V78H24z" fill="#315c64"/>
+      <path d="M42 35h8v-7h29v5h9v29h-8v8H48v-8h-8V43h2z" fill="#f1df9f"/>
+      <path d="M48 68h34v-6h10v24H84v8H43v-8h-7V70h12z" fill="#f1df9f"/>
+      <path d="M18 61h18v17H24v8H12V69h6zM92 59h18v8h8v19h-12v-8H92z" fill="#315c64"/>
+      <path d="M23 76h22v18h-8v6H17V88h6zM83 76h22v12h6v12H91v-6h-8z" fill="#f1df9f"/>
+      <path d="m50 43 10 4-10 4M82 43l-10 4 10 4M61 58h9" fill="none"/>
+      <path d="m22 87 6-7M32 91l6-9M105 87l-6-7M95 91l-6-9" fill="none"/>
+    </g>
+  </symbol>
+
+  <symbol id="snorlax-curled" viewBox="0 0 144 88">
+    <g shape-rendering="crispEdges" stroke="#17282b" stroke-width="4" stroke-linejoin="miter">
+      <path d="M12 78h122v6H12z" fill="#17282b" opacity=".24" stroke="none"/>
+      <path d="M17 50h8V36h12V25h17V17h43v7h18v9h10v11h8v23h-8v9H31v-7H17z" fill="#315c64"/>
+      <path d="M28 40 22 15l25 13M96 24l22-16-3 27" fill="#315c64"/>
+      <path d="M36 35h8v-7h36v5h11v8h8v18h-8v8H51v-6H39v-8h-8V41h5z" fill="#f1df9f"/>
+      <path d="M81 49h39v9h7v12h-9v7H80V67H69V56h12z" fill="#f1df9f"/>
+      <path d="m46 41 11 4-11 4M79 41l-11 4 11 4M58 55h9" fill="none"/>
+      <path d="M111 58h9v14M102 60l7 12M93 60l6 12" fill="none"/>
+      <path d="M27 61h18v9H33v7H17V67h10z" fill="#315c64"/>
+    </g>
+  </symbol>
+
+  <symbol id="snorlax-sprawled" viewBox="0 0 160 80">
+    <g shape-rendering="crispEdges" stroke="#17282b" stroke-width="4" stroke-linejoin="miter">
+      <path d="M8 70h144v6H8z" fill="#17282b" opacity=".24" stroke="none"/>
+      <path d="M35 36h14V25h18V18h42v6h14v10h11v26h-12v9H39v-7H24V49h11z" fill="#315c64"/>
+      <path d="M34 42 17 24l4 31M126 40l18-19-3 33" fill="#315c64"/>
+      <path d="M58 29h42v6h10v21h-8v9H54v-7H44V40h14z" fill="#f1df9f"/>
+      <path d="M10 44h25v18H24v7H8V55h2zM132 42h20v12h6v15h-17v-7h-14V49h5z" fill="#315c64"/>
+      <path d="M45 57h26v12H42zM93 56h29v13H91z" fill="#f1df9f"/>
+      <path d="m65 37 9 4-9 4M99 37l-9 4 9 4M77 52h10" fill="none"/>
+      <path d="m50 65 5-6M61 68l5-7M112 65l-5-6M101 68l-5-7" fill="none"/>
+    </g>
+  </symbol>
+</svg>

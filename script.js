@@ -39,50 +39,78 @@ reveals.forEach((element, index) => {
   observer.observe(element);
 });
 
-const sleepyFriend = document.getElementById("sleepy-friend");
-let lastSpot = -1;
+const pixelPets = [...document.querySelectorAll(".pixel-pet")];
+const petAnchors = [
+  { side: "left", progress: 0.12 },
+  { side: "right", progress: 0.22 },
+  { side: "left", progress: 0.35 },
+  { side: "right", progress: 0.48 },
+  { side: "left", progress: 0.62 },
+  { side: "right", progress: 0.75 },
+  { side: "left", progress: 0.86 },
+  { side: "right", progress: 0.93 },
+];
 
-function placeSleepyFriend(animate = false) {
-  if (!sleepyFriend) return;
+function shuffledAnchors() {
+  return petAnchors
+    .map((anchor, index) => ({ ...anchor, index, order: Math.random() }))
+    .sort((a, b) => a.order - b.order);
+}
 
+function movePetTo(pet, anchor, animate = false) {
   const pageHeight = document.documentElement.scrollHeight;
-  const mascotWidth = sleepyFriend.offsetWidth || 180;
-  const mascotHeight = sleepyFriend.offsetHeight || 125;
-  const gutter = Math.max(8, Math.min(window.innerWidth * 0.025, 36));
-  const maxTop = Math.max(220, pageHeight - mascotHeight - 180);
+  const petWidth = pet.offsetWidth || 150;
+  const petHeight = pet.offsetHeight || 100;
+  const gutter = Math.max(5, Math.min(window.innerWidth * 0.018, 26));
+  const maxTop = Math.max(220, pageHeight - petHeight - 150);
+  const left =
+    anchor.side === "left"
+      ? gutter
+      : window.innerWidth - petWidth - gutter;
 
-  const spots = [
-    { left: gutter, top: pageHeight * 0.17 },
-    { left: window.innerWidth - mascotWidth - gutter, top: pageHeight * 0.29 },
-    { left: gutter, top: pageHeight * 0.44 },
-    { left: window.innerWidth - mascotWidth - gutter, top: pageHeight * 0.58 },
-    { left: gutter, top: pageHeight * 0.72 },
-    { left: window.innerWidth - mascotWidth - gutter, top: pageHeight * 0.84 },
-  ];
-
-  let nextSpot;
-  do {
-    nextSpot = Math.floor(Math.random() * spots.length);
-  } while (spots.length > 1 && nextSpot === lastSpot);
-
-  lastSpot = nextSpot;
-  const spot = spots[nextSpot];
-  sleepyFriend.style.left = `${Math.max(gutter, spot.left)}px`;
-  sleepyFriend.style.top = `${Math.min(maxTop, Math.max(160, spot.top))}px`;
+  pet.dataset.slot = String(anchor.index);
+  pet.style.left = `${Math.max(gutter, left)}px`;
+  pet.style.top = `${Math.min(maxTop, Math.max(170, pageHeight * anchor.progress))}px`;
 
   if (animate) {
-    sleepyFriend.classList.add("is-moving");
-    window.setTimeout(() => sleepyFriend.classList.remove("is-moving"), 800);
+    pet.classList.add("is-moving");
+    window.setTimeout(() => pet.classList.remove("is-moving"), 800);
   }
 }
 
-function schedulePlacement() {
-  window.requestAnimationFrame(() => placeSleepyFriend(false));
+function placePixelPets() {
+  if (!pixelPets.length) return;
+  const anchors = shuffledAnchors();
+  pixelPets.forEach((pet, index) => movePetTo(pet, anchors[index], false));
 }
 
-window.addEventListener("load", schedulePlacement);
-window.addEventListener("resize", schedulePlacement);
-sleepyFriend?.addEventListener("click", () => placeSleepyFriend(true));
+function relocatePet(pet) {
+  const occupied = new Set(
+    pixelPets
+      .filter((otherPet) => otherPet !== pet)
+      .map((otherPet) => Number(otherPet.dataset.slot)),
+  );
+  const available = shuffledAnchors().filter(
+    (anchor) =>
+      !occupied.has(anchor.index) &&
+      anchor.index !== Number(pet.dataset.slot),
+  );
+  movePetTo(pet, available[0] || shuffledAnchors()[0], true);
+}
+
+window.addEventListener("load", () => {
+  window.requestAnimationFrame(placePixelPets);
+});
+
+let resizeTimer;
+window.addEventListener("resize", () => {
+  window.clearTimeout(resizeTimer);
+  resizeTimer = window.setTimeout(placePixelPets, 120);
+});
+
+pixelPets.forEach((pet) => {
+  pet.addEventListener("click", () => relocatePet(pet));
+});
 
 let ticking = false;
 window.addEventListener(

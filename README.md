@@ -18,4 +18,6 @@ Then visit `http://localhost:8000`.
 
 - Page content and project links live in `index.html`.
 - Colors and visual styling live in `style.css`.
-- Interactions—including the randomly placed sleepy mascot—live in `script.js`.
+- Interactions—including the randomly placed pixel pets—live in `script.js`.
+- The résumé shown on the site is `assets/Swaraj-Zende-Resume.pdf`.
+- Pixel Snorlax poses live in `snorlax-sprites.svg`.
