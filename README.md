@@ -4,6 +4,10 @@ A playful, responsive portfolio for a robotics engineer. Built with plain HTML,
 CSS, and JavaScript so it can be served directly by GitHub Pages without a
 build step.
 
+The site includes a click-to-dispatch warehouse simulation with A* path
+planning, live robot telemetry, randomized missions, rack layouts, and a
+charging loop.
+
 ## Run locally
 
 Open `index.html` directly, or serve the directory:

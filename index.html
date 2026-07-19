@@ -36,6 +36,7 @@
 
       <nav id="site-nav" class="site-nav" aria-label="Main navigation">
         <a href="#work">Work</a>
+        <a href="#lab">Lab</a>
         <a href="#about">About</a>
         <a href="#resume">Résumé</a>
         <a href="#contact">Contact</a>
@@ -357,9 +358,104 @@
         </a>
       </section>
 
+      <section id="lab" class="robot-lab section-shell">
+        <div class="lab-heading reveal">
+          <div>
+            <p class="section-kicker">02 / Autonomy lab</p>
+            <h2>Dispatch<br /><em>the robot.</em></h2>
+          </div>
+          <div class="lab-brief">
+            <span class="lab-live"><i></i> SIMULATION LIVE</span>
+            <p>
+              Click anywhere on the warehouse floor. Zippy Sim will plan the
+              shortest collision-free route around the racks and drive there.
+            </p>
+          </div>
+        </div>
+
+        <div class="lab-console reveal">
+          <div class="lab-window-bar">
+            <span class="window-dots"><i></i><i></i><i></i></span>
+            <span>ZIPPY_SIM / WAREHOUSE_0310.MAP</span>
+            <span id="lab-clock">T+ 00:00</span>
+          </div>
+
+          <div class="lab-main">
+            <div class="lab-map-wrap">
+              <canvas
+                id="robot-lab-canvas"
+                width="1000"
+                height="620"
+                tabindex="0"
+                aria-label="Interactive warehouse map. Click a free grid cell to send the robot there."
+              >
+                Your browser does not support the interactive warehouse map.
+              </canvas>
+              <div class="map-hint">
+                <span class="map-cursor">＋</span>
+                TAP A FREE CELL TO SET A GOAL
+              </div>
+              <div id="lab-toast" class="lab-toast" role="status" aria-live="polite">
+                Map ready. Awaiting mission.
+              </div>
+            </div>
+
+            <aside class="lab-telemetry" aria-label="Robot telemetry">
+              <div class="telemetry-title">
+                <span>UNIT</span>
+                <strong>ZIPPY / 01</strong>
+              </div>
+              <div class="telemetry-radar" aria-hidden="true">
+                <span class="telemetry-sweep"></span>
+                <span class="telemetry-dot"></span>
+              </div>
+              <dl>
+                <div>
+                  <dt>STATE</dt>
+                  <dd id="lab-state">IDLE</dd>
+                </div>
+                <div>
+                  <dt>POSITION</dt>
+                  <dd id="lab-position">02, 11</dd>
+                </div>
+                <div>
+                  <dt>PATH</dt>
+                  <dd id="lab-path">—</dd>
+                </div>
+                <div>
+                  <dt>BATTERY</dt>
+                  <dd><span id="lab-battery">100</span>%</dd>
+                </div>
+              </dl>
+              <div class="lab-battery-track">
+                <span id="lab-battery-fill"></span>
+              </div>
+            </aside>
+          </div>
+
+          <div class="lab-controls">
+            <p>
+              <span class="control-key">A*</span>
+              Manhattan heuristic · 4-way motion · live replanning
+            </p>
+            <div>
+              <button id="lab-random-goal" type="button">
+                Random mission <span>⌁</span>
+              </button>
+              <button id="lab-shuffle" type="button">
+                Shift racks <span>⟳</span>
+              </button>
+              <button id="lab-home" type="button">
+                Go charge <span>⌂</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="about" class="about section-shell">
         <div class="about-label reveal">
-          <p class="section-kicker">02 / About</p>
+          <p class="section-kicker">03 / About</p>
           <div class="profile-stamp">
             <span>R</span>
             <span class="stamp-copy">OBOTICS<br />ENGINEER</span>
@@ -405,7 +501,7 @@
       <section id="resume" class="resume section-shell">
         <div class="resume-intro reveal">
           <div>
-            <p class="section-kicker">03 / Field log</p>
+            <p class="section-kicker">04 / Field log</p>
             <h2>Résumé,<br /><em>with a pulse.</em></h2>
           </div>
           <div class="resume-actions">
@@ -545,7 +641,7 @@
       <section class="toolkit section-shell">
         <div class="section-heading compact reveal">
           <div>
-            <p class="section-kicker">04 / Toolkit</p>
+            <p class="section-kicker">05 / Toolkit</p>
             <h2>Built with<br /><em>curiosity.</em></h2>
           </div>
         </div>
@@ -621,7 +717,7 @@
       </section>
 
       <section id="contact" class="contact section-shell">
-        <p class="section-kicker reveal">05 / Say hello</p>
+        <p class="section-kicker reveal">06 / Say hello</p>
         <div class="contact-main reveal">
           <h2>Have an interesting<br />problem to <em>solve?</em></h2>
           <p>

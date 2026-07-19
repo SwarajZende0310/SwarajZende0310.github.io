@@ -1269,6 +1269,328 @@ a:focus-visible {
   background: var(--orange);
 }
 
+.robot-lab {
+  position: relative;
+  padding-top: clamp(5rem, 9vw, 9rem);
+  padding-bottom: clamp(5rem, 9vw, 9rem);
+  background: var(--paper);
+}
+
+.lab-heading {
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 4rem;
+  align-items: end;
+}
+
+.lab-heading h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(3.2rem, 6.5vw, 7rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+}
+
+.lab-heading h2 em {
+  color: var(--orange);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.lab-brief {
+  max-width: 430px;
+  justify-self: end;
+}
+
+.lab-brief p {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.lab-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.lab-live i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #57ba50;
+  box-shadow: 0 0 0 5px rgba(87, 186, 80, 0.15);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.lab-console {
+  border: 2px solid var(--ink);
+  color: var(--paper);
+  background: var(--ink);
+  box-shadow: 16px 16px 0 var(--orange);
+}
+
+.lab-window-bar {
+  height: 46px;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  border-bottom: 1px solid rgba(243, 239, 229, 0.3);
+  font-family: "Courier New", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.07em;
+}
+
+.lab-window-bar > span:last-child {
+  justify-self: end;
+  color: var(--acid);
+}
+
+.lab-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  min-height: 570px;
+}
+
+.lab-map-wrap {
+  position: relative;
+  min-width: 0;
+  border-right: 1px solid rgba(243, 239, 229, 0.25);
+  background: #122023;
+  overflow: hidden;
+}
+
+#robot-lab-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 570px;
+  cursor: crosshair;
+  touch-action: manipulation;
+}
+
+.map-hint {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  padding: 0.42rem 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(230, 255, 88, 0.6);
+  color: var(--acid);
+  background: rgba(18, 32, 35, 0.82);
+  backdrop-filter: blur(5px);
+  font-family: "Courier New", monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+.map-cursor {
+  font-size: 0.9rem;
+  animation: map-cursor 1.8s steps(2, end) infinite;
+}
+
+@keyframes map-cursor {
+  50% {
+    transform: rotate(45deg);
+  }
+}
+
+.lab-toast {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  max-width: calc(100% - 2rem);
+  padding: 0.5rem 0.65rem;
+  border-left: 3px solid var(--cyan);
+  color: var(--paper);
+  background: rgba(18, 32, 35, 0.88);
+  font-family: "Courier New", monospace;
+  font-size: 0.55rem;
+  pointer-events: none;
+  transition: color 180ms ease;
+}
+
+.lab-toast.is-alert {
+  color: var(--orange);
+  border-left-color: var(--orange);
+}
+
+.lab-telemetry {
+  padding: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(rgba(131, 221, 208, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(131, 221, 208, 0.04) 1px, transparent 1px),
+    #192a2d;
+  background-size: 16px 16px;
+}
+
+.telemetry-title {
+  display: flex;
+  flex-direction: column;
+  font-family: "Courier New", monospace;
+}
+
+.telemetry-title span {
+  color: #829692;
+  font-size: 0.48rem;
+  letter-spacing: 0.1em;
+}
+
+.telemetry-title strong {
+  color: var(--acid);
+  font-size: 0.82rem;
+}
+
+.telemetry-radar {
+  position: relative;
+  width: 140px;
+  aspect-ratio: 1;
+  margin: 2rem auto;
+  border: 1px solid rgba(131, 221, 208, 0.55);
+  border-radius: 50%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle, transparent 0 31%, rgba(131, 221, 208, 0.3) 32% 32.8%, transparent 33% 64%, rgba(131, 221, 208, 0.3) 65% 65.8%, transparent 66%),
+    linear-gradient(90deg, transparent 49.5%, rgba(131, 221, 208, 0.25) 50%, transparent 50.5%),
+    linear-gradient(transparent 49.5%, rgba(131, 221, 208, 0.25) 50%, transparent 50.5%);
+}
+
+.telemetry-sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(transparent 0 76%, rgba(131, 221, 208, 0.4) 94%, var(--cyan));
+  animation: sweep 4s linear infinite;
+}
+
+.telemetry-dot {
+  position: absolute;
+  top: 36%;
+  left: 58%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 0 5px rgba(255, 91, 53, 0.15);
+}
+
+.lab-telemetry dl {
+  margin: 0;
+}
+
+.lab-telemetry dl > div {
+  padding: 0.65rem 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(243, 239, 229, 0.16);
+  font-family: "Courier New", monospace;
+}
+
+.lab-telemetry dt {
+  color: #829692;
+  font-size: 0.48rem;
+  letter-spacing: 0.08em;
+}
+
+.lab-telemetry dd {
+  margin: 0;
+  color: var(--paper);
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+#lab-state {
+  color: var(--acid);
+}
+
+.lab-battery-track {
+  height: 7px;
+  margin-top: 1.2rem;
+  border: 1px solid rgba(243, 239, 229, 0.5);
+}
+
+.lab-battery-track span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--acid);
+  transition:
+    width 250ms ease,
+    background 250ms ease;
+}
+
+.lab-controls {
+  min-height: 66px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  border-top: 1px solid rgba(243, 239, 229, 0.25);
+}
+
+.lab-controls p {
+  margin: 0;
+  color: #8da09b;
+  font-family: "Courier New", monospace;
+  font-size: 0.5rem;
+}
+
+.control-key {
+  margin-right: 0.5rem;
+  padding: 0.28rem 0.38rem;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+}
+
+.lab-controls > div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.lab-controls button {
+  padding: 0.62rem 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  border: 1px solid rgba(243, 239, 229, 0.45);
+  color: var(--paper);
+  background: transparent;
+  font-family: "Courier New", monospace;
+  font-size: 0.53rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.lab-controls button:hover {
+  border-color: var(--acid);
+  color: var(--ink);
+  background: var(--acid);
+}
+
 .about {
   position: relative;
   display: grid;
@@ -2299,6 +2621,24 @@ a:focus-visible {
     grid-template-columns: minmax(0, 1fr) minmax(170px, 0.38fr) auto;
   }
 
+  .lab-main {
+    grid-template-columns: minmax(0, 1fr) 190px;
+  }
+
+  .lab-telemetry {
+    padding: 1rem;
+  }
+
+  .telemetry-radar {
+    width: 115px;
+  }
+
+  .lab-controls {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
   .about {
     grid-template-columns: 1fr;
   }
@@ -2524,6 +2864,81 @@ a:focus-visible {
     padding: 1rem 0 0;
     border-top: 1px solid var(--line);
     border-left: 0;
+  }
+
+  .lab-heading {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .lab-brief {
+    justify-self: start;
+  }
+
+  .lab-console {
+    box-shadow: 8px 8px 0 var(--orange);
+  }
+
+  .lab-window-bar {
+    grid-template-columns: 1fr auto;
+  }
+
+  .lab-window-bar > span:nth-child(2) {
+    display: none;
+  }
+
+  .lab-main {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-map-wrap {
+    min-height: 430px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(243, 239, 229, 0.25);
+  }
+
+  #robot-lab-canvas {
+    min-height: 430px;
+  }
+
+  .lab-telemetry {
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    gap: 1rem 1.5rem;
+  }
+
+  .telemetry-radar {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: 90px;
+    margin: 0;
+    justify-self: end;
+  }
+
+  .lab-telemetry dl {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column: 1;
+  }
+
+  .lab-telemetry dl > div {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .lab-battery-track {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+
+  .lab-controls > div {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .lab-controls button {
+    flex: 1;
+    justify-content: space-between;
   }
 
   .rack {
